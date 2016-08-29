@@ -1,0 +1,1 @@
+web: gunicorn gesnergy.wsgi --log-file -
