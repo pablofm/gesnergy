@@ -43,8 +43,8 @@ class MeasureTest(TestCase):
 
 class PricingListTest(TestCase):
     def setUp(self):
-        self.pricing1 = Pricing.objects.create(day=date.today(), price=200)
-        self.pricing2 = Pricing.objects.create(day=date.today(), price=200)
+        self.pricing1 = Pricing.objects.create(day=date.today(), price=22.30)
+        self.pricing2 = Pricing.objects.create(day=date.today(), price=42.12)
         url = reverse('pricing_list')
         self.response = self.client.get(url)
 
@@ -54,14 +54,14 @@ class PricingListTest(TestCase):
     def test_pricing_call_proper_template(self):
         self.assertTemplateUsed(self.response, 'billing/pricing_list.html')
 
-    def test_prices_takes_proper_items(self):
+    def test_pricing_takes_proper_items(self):
         pricing_list = self.response.context['pricing_list']
         self.assertCountEqual(pricing_list, [self.pricing1, self.pricing2])
 
 
-class PriceTest(TestCase):
+class PricingTest(TestCase):
     def setUp(self):
-        self.pricing = Pricing.objects.create(day=date.today(), price=200)
+        self.pricing = Pricing.objects.create(day=date.today(), price=200.22)
         url = reverse('pricing_detail', kwargs={'pricing_id': self.pricing.id})
         self.response = self.client.get(url)
 
