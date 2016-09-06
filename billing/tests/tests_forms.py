@@ -1,5 +1,6 @@
 from django.test import TestCase
 from billing.forms import LectureForm, PricingForm
+from billing.models import Lecture
 
 
 class LectureFormTest(TestCase):
@@ -25,6 +26,12 @@ class LectureFormTest(TestCase):
 
     def test_lecture_cant_be_empty(self):
         self.data['lecture'] = None
+        form = LectureForm(self.data)
+        self.assertFalse(form.is_valid())
+
+    def test_lecture_cant_be_smaller_than_another_one(self):
+        Lecture.objects.create(day='2015-01-01', lecture=2)
+        self.data['lecture'] = 1
         form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
@@ -68,7 +75,7 @@ class PricingFormTest(TestCase):
         form = PricingForm(self.data)
         self.assertTrue(form.is_valid())
 
-    def test_lecture_cant_be_negative(self):
-        self.data['price'] = -20
+    def test_pricing_cant_be_negative(self):
+        self.data['price'] = -20.0
         form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
