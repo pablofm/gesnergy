@@ -16,7 +16,7 @@ class BillingTest(TestCase):
         self.assertTemplateUsed(self.response, 'billing/billing.html')
 
 
-class MeasureListTest(TestCase):
+class LectureListTest(TestCase):
     def setUp(self):
         self.measure1 = Lecture.objects.create(day=date.today(), lecture=200)
         self.measure2 = Lecture.objects.create(day=date.today(), lecture=200)
@@ -34,7 +34,7 @@ class MeasureListTest(TestCase):
         self.assertCountEqual(measures, [self.measure1, self.measure2])
 
 
-class MeasureTest(TestCase):
+class LectureTest(TestCase):
     def setUp(self):
         self.lecture = Lecture.objects.create(day=date.today(), lecture=200)
         url = reverse('lecture_detail', kwargs={'lecture_id': self.lecture.id})
@@ -51,6 +51,23 @@ class MeasureTest(TestCase):
 
     def test_measure_call_proper_template(self):
         self.assertTemplateUsed(self.response, 'billing/lecture_detail.html')
+
+
+class LectureCreate(TestCase):
+    def setUp(self):
+        self.data = {
+            'day': '2015-12-21',
+            'lecture': 22.15
+        }
+
+    def test_creating_a_lecture_increases_the_number_of_objects(self):
+        self.client.post(reverse('lecture_create'), self.data)
+        self.assertEqual(1, Lecture.objects.count())
+
+    def test_wrong_data_doestn_work(self):
+        self.data['day'] = '2015-2015-2015'
+        self.client.post(reverse('lecture_create'), self.data)
+        self.assertEqual(0, Lecture.objects.count())
 
 
 class PricingListTest(TestCase):
@@ -88,3 +105,20 @@ class PricingTest(TestCase):
 
     def test_pricing_call_proper_template(self):
         self.assertTemplateUsed(self.response, 'billing/pricing_detail.html')
+
+
+class PricingCreate(TestCase):
+    def setUp(self):
+        self.data = {
+            'day': '2015-12-21',
+            'price': 22.15
+        }
+
+    def test_creating_a_pricing_increases_the_number_of_objects(self):
+        self.client.post(reverse('pricing_create'), self.data)
+        self.assertEqual(1, Pricing.objects.count())
+
+    def test_wrong_data_doestn_work(self):
+        self.data['day'] = '2015-2015-2015'
+        self.client.post(reverse('pricing_create'), self.data)
+        self.assertEqual(0, Pricing.objects.count())
