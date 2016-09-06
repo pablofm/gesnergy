@@ -8,7 +8,7 @@ I've used:
 * Bootstrap 3
 * Django 1.10
 * Font Awesome
-* Bluebox Free Bootstrap Admin Template
+* [Bluebox Free Bootstrap Admin Template](http://webthemez.com/bluebox-free-bootstrap-admin-template/)
 
 # License
 I don't want to choose any license. You can do whatever you want to do with my software. Just respect the licenses that i've respected (Bluebox) What about paying them? :P
