@@ -1,4 +1,9 @@
 {% extends "billing/billing.html" %}
+{% block header %}Pricing{% endblock header %}
+{% block breadcrumb %}
+	<li><a href="{% url 'billing' %}">Dashboard</a></li>
+	<li class="active"><a href="{% url 'pricing_list' %}">Pricing</a></li>
+{% endblock breadcrumb %}
 {% block main %}
 	{{pricing_list}}
 {% endblock main %}
