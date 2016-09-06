@@ -5,7 +5,7 @@ from billing.forms import MeasureForm, PricingForm
 class MeasureFormTest(TestCase):
     def setUp(self):
         self.data = {
-            'day': '21/12/2015',
+            'day': '2015-12-21',
             'measure': 22.15
         }
 
@@ -36,8 +36,8 @@ class MeasureFormTest(TestCase):
 class PricingFormTest(TestCase):
     def setUp(self):
         self.data = {
-            'day': '21/12/2015',
-            'pricing': 115
+            'day': '2015-12-21',
+            'price': 115.1
         }
 
     def test_form_cant_be_empty(self):
@@ -55,7 +55,7 @@ class PricingFormTest(TestCase):
         self.assertFalse(form.is_valid())
 
     def test_measure_cant_be_empty(self):
-        self.data['measure'] = None
+        self.data['price'] = None
         form = PricingForm(self.data)
         self.assertFalse(form.is_valid())
 

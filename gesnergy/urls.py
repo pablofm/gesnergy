@@ -19,5 +19,5 @@ from billing import urls as billing_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^billing/', include(billing_urls)),
+    url(r'^', include(billing_urls)),
 ]

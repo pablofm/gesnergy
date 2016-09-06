@@ -1,6 +1,12 @@
+from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+
 from billing.models import Measure, Pricing
+
+
+class BillingView(TemplateView):
+    template_name = "billing/billing.html"
 
 
 class MeasureListView(ListView):
