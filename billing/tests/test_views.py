@@ -57,7 +57,7 @@ class LectureCreate(TestCase):
     def setUp(self):
         self.data = {
             'day': '2015-12-21',
-            'lecture': 22.15
+            'lecture': 22
         }
 
     def test_creating_a_lecture_increases_the_number_of_objects(self):

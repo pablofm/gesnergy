@@ -2,11 +2,11 @@ from django.test import TestCase
 from billing.forms import LectureForm, PricingForm
 
 
-class MeasureFormTest(TestCase):
+class LectureFormTest(TestCase):
     def setUp(self):
         self.data = {
             'day': '2015-12-21',
-            'lecture': 22.15
+            'lecture': 215
         }
 
     def test_form_cant_be_empty(self):
@@ -23,8 +23,13 @@ class MeasureFormTest(TestCase):
         form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
-    def test_measure_cant_be_empty(self):
+    def test_lecture_cant_be_empty(self):
         self.data['lecture'] = None
+        form = LectureForm(self.data)
+        self.assertFalse(form.is_valid())
+
+    def test_lecture_cant_be_negative(self):
+        self.data['lecture'] = -20.0
         form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
@@ -62,3 +67,8 @@ class PricingFormTest(TestCase):
     def test_correct_form_is_valid(self):
         form = PricingForm(self.data)
         self.assertTrue(form.is_valid())
+
+    def test_lecture_cant_be_negative(self):
+        self.data['price'] = -20
+        form = LectureForm(self.data)
+        self.assertFalse(form.is_valid())
