@@ -2,25 +2,25 @@ from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from billing.models import Measure, Pricing
+from billing.models import Lecture, Pricing
 
 
 class BillingView(TemplateView):
     template_name = "billing/billing.html"
 
 
-class MeasureListView(ListView):
-    model = Measure
+class LectureListView(ListView):
+    model = Lecture
 
     def get_context_data(self, **kwargs):
-        context = super(MeasureListView, self).get_context_data(**kwargs)
-        context['measure_list'] = Measure.objects.all()
+        context = super(LectureListView, self).get_context_data(**kwargs)
+        context['lecture_list'] = Lecture.objects.all()
         return context
 
 
-class MeasureView(DetailView):
-    model = Measure
-    pk_url_kwarg = 'measure_id'
+class LectureView(DetailView):
+    model = Lecture
+    pk_url_kwarg = 'lecture_id'
 
 
 class PricingListView(ListView):

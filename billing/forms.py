@@ -1,10 +1,10 @@
 from django import forms
-from billing.models import Measure, Pricing
+from billing.models import Lecture, Pricing
 
 
-class MeasureForm(forms.ModelForm):
+class LectureForm(forms.ModelForm):
     class Meta:
-        model = Measure
+        model = Lecture
         fields = '__all__'
 
 

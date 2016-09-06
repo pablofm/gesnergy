@@ -1,9 +1,9 @@
 from django.db import models
 
 
-class Measure(models.Model):
+class Lecture(models.Model):
     day = models.DateField()
-    measure = models.FloatField()
+    lecture = models.FloatField()
 
 
 class Pricing(models.Model):

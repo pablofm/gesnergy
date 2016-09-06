@@ -1,35 +1,35 @@
 from django.test import TestCase
-from billing.forms import MeasureForm, PricingForm
+from billing.forms import LectureForm, PricingForm
 
 
 class MeasureFormTest(TestCase):
     def setUp(self):
         self.data = {
             'day': '2015-12-21',
-            'measure': 22.15
+            'lecture': 22.15
         }
 
     def test_form_cant_be_empty(self):
-        form = MeasureForm({})
+        form = LectureForm({})
         self.assertFalse(form.is_valid())
 
     def test_day_cant_be_empty(self):
         self.data['day'] = None
-        form = MeasureForm(self.data)
+        form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
     def test_day_cant_be_wrong(self):
         self.data['day'] = '31/02/2016'
-        form = MeasureForm(self.data)
+        form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
     def test_measure_cant_be_empty(self):
-        self.data['measure'] = None
-        form = MeasureForm(self.data)
+        self.data['lecture'] = None
+        form = LectureForm(self.data)
         self.assertFalse(form.is_valid())
 
     def test_correct_form_is_valid(self):
-        form = MeasureForm(self.data)
+        form = LectureForm(self.data)
         self.assertTrue(form.is_valid())
 
 
