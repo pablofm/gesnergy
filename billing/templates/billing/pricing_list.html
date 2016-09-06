@@ -1,9 +1,18 @@
 {% extends "billing/billing.html" %}
 {% block header %}Pricing{% endblock header %}
+
+{% block menu %}
+	<li><a href="{% url 'billing' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+	<li><a class="active-menu" href="{% url 'pricing_list' %}"><i class="fa fa-bolt"></i> Pricing</a></li>
+	<li><a href="{% url 'lecture_list' %}"><i class="fa fa-calendar-check-o"></i> Lectures</a></li>
+{% endblock menu %}
+
 {% block breadcrumb %}
 	<li><a href="{% url 'billing' %}">Dashboard</a></li>
-	<li class="active"><a href="{% url 'pricing_list' %}">Pricing</a></li>
+	<li class="active">Pricing</li>
 {% endblock breadcrumb %}
+
 {% block main %}
+	<a href="{% url 'pricing_create' %}"><button type="button" class="btn btn-default btn-lg"><i class="fa fa-plus" aria-hidden="true"></i> Add</button></a>
 	{{pricing_list}}
 {% endblock main %}

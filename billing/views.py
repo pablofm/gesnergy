@@ -1,5 +1,8 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
+
+from django.views.generic.edit import CreateView
+
 from django.views.generic.list import ListView
 
 from billing.models import Lecture, Pricing
@@ -18,9 +21,19 @@ class LectureListView(ListView):
         return context
 
 
+class LectureCreateView(CreateView):
+    model = Lecture
+    fields = '__all__'
+
+
 class LectureView(DetailView):
     model = Lecture
     pk_url_kwarg = 'lecture_id'
+
+
+class PricingCreateView(CreateView):
+    model = Pricing
+    fields = '__all__'
 
 
 class PricingListView(ListView):

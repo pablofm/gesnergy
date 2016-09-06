@@ -1,0 +1,24 @@
+{% extends "billing/billing.html" %}
+
+{% block header %}Lectures{% endblock header %}
+
+{% block menu %}
+	<li><a href="{% url 'billing' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+	<li><a href="{% url 'pricing_list' %}"><i class="fa fa-bolt"></i> Pricing</a></li>
+	<li><a class="active-menu" href="{% url 'lecture_list' %}"><i class="fa fa-calendar-check-o"></i> Lectures</a></li>
+{% endblock menu %}
+
+
+{% block breadcrumb %}
+	<li><a href="{% url 'billing' %}">Dashboard</a></li>
+	<li><a href="{% url 'lecture_list' %}">Lectures</a></li>
+	<li class="active">Add</li>
+{% endblock breadcrumb %}
+
+{% block main %}
+	<form action="" method="post">
+		{% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit" value="Save" />
+	</form>
+{% endblock main %}
