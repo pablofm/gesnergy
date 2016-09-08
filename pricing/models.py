@@ -8,3 +8,6 @@ class Pricing(models.Model):
 
     def get_absolute_url(self):
         return reverse('pricing_detail', kwargs={'pricing_id': self.pk})
+
+    def __str__(self):
+        return str(round(self.price, 5))

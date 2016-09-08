@@ -43,7 +43,7 @@
                     {% block menu %}
                     <li><a class="active-menu" href="{% url 'billing' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li><a href="{% url 'pricing_list' %}"><i class="fa fa-bolt"></i> Pricing</a></li>
-                    <li><a href="{% url 'lecture_list' %}"><i class="fa fa-calendar"></i> Lectures</a></li>
+                    <li><a href="{% url 'lecture_list' %}"><i class="fa fa-eye"></i> Lectures</a></li>
                     <li><a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Are you sure?" href="{% url 'load_data' %}">Load sample data</a></li>
                     <li><a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Are you sure?" href="{% url 'clean_data' %}">Clean database</a></li>
                     {% endblock menu %}
@@ -63,36 +63,32 @@
             <div id="page-inner">
                 
                 {% block main %}
-                {% comment %}
                 <div class="row">
-                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder blue">
+                            <div class="panel-left pull-left blue"><i class="fa fa fa-calendar fa-5x"></i></div>
+                            <div class="panel-right"><h3>{{last_price.day}}</h3></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder blue">
+                            <div class="panel-left pull-left blue"><i class="fa fa-usd fa-5x"></i></div>
+                            <div class="panel-right"><h3>{{last_price}}</h3><strong> Last price</strong></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12">
                         <div class="panel panel-primary text-center no-boder blue">
                             <div class="panel-left pull-left blue"><i class="fa fa-eye fa-5x"></i></div>
-                            <div class="panel-right"><h3>10,253</h3><strong> Daily Visits</strong></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue"><i class="fa fa-shopping-cart fa-5x"></i></div>
-                            <div class="panel-right"><h3>33,180 </h3><strong> Sales</strong></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue"><i class="fa fa fa-comments fa-5x"></i></div>
-                            <div class="panel-right"><h3>16,022 </h3><strong> Comments </strong></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue"><i class="fa fa-users fa-5x"></i></div>
-                            <div class="panel-right"><h3>36,752 </h3><strong>No. of Visits</strong></div>
+                            <div class="panel-right"><h3>{{last_lecture}}</h3><strong> Last lecture</strong></div>
                         </div>
                     </div>
                 </div>
 
-                
-                
+                {% comment %}
+                                
+
+                    
                 <div class="row">
                     <div class="col-md-5">
                         <div class="panel panel-default">
