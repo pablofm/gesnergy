@@ -13,11 +13,14 @@
 {% block breadcrumb %}
 	<li><a href="{% url 'billing' %}">Dashboard</a></li>
 	<li><a href="{% url 'pricing_list' %}">Pricing</a></li>
-	<li class="active">Details</li>
+	<li class="active">Update</li>
 {% endblock breadcrumb %}
 
 {% block main %}
-	<p><strong>Day: </strong> {{object.day}}</p>
-	<p><strong>Price: </strong> {{object.price}} €</p>
-	<input class="btn btn-danger" type="submit" value="Cancel" onclick="window.history.back();"/>
+	<form action="" method="post">
+		{% csrf_token %}
+    	{{ form.as_p }}
+		<input class="btn btn-danger" type="submit" value="Cancel" onclick="window.history.back();"/>
+    	<input class="btn btn-success" type="submit" value="Update" />
+	</form>
 {% endblock main %}

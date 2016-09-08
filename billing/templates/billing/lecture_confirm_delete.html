@@ -1,7 +1,5 @@
 {% extends "billing/billing.html" %}
 
-{% load django_tables2 %}
-
 {% block header %}Lectures{% endblock header %}
 
 {% block menu %}
@@ -10,12 +8,17 @@
 	<li><a class="active-menu" href="{% url 'lecture_list' %}"><i class="fa fa-calendar"></i> Lectures</a></li>
 {% endblock menu %}
 
+
 {% block breadcrumb %}
 	<li><a href="{% url 'billing' %}">Dashboard</a></li>
-	<li class="active">Lectures</li>
+	<li><a href="{% url 'lecture_list' %}">Lectures</a></li>
+	<li class="active">Delete</li>
 {% endblock breadcrumb %}
 
 {% block main %}
-	<a href="{% url 'lecture_create' %}"><button type="button" class="btn btn-default add"><i class="fa fa-plus" aria-hidden="true"></i> Add</button></a>
-	{% render_table table "billing/table.html" %}
+	<form action="" method="post">{% csrf_token %}
+    	<p>Are you sure you want to delete the lecture of day "{{object.day}}" with lecture {{object.lecture}}"?</p>
+	    <input class="btn btn-danger" type="submit" value="Cancel" onclick="window.history.back();"/>
+	    <input class="btn btn-success" type="submit" value="Delete" />
+	</form>
 {% endblock main %}

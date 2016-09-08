@@ -625,3 +625,14 @@ font-size: 19px;
 }
 
 
+.action{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.actions{
+  text-align: center;
+}
+
+.add{
+  margin-bottom: 20px;
+}

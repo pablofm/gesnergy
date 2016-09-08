@@ -15,7 +15,6 @@
 {% endblock breadcrumb %}
 
 {% block main %}
-	<a href="{% url 'pricing_create' %}"><button type="button" class="btn btn-default btn-lg"><i class="fa fa-plus" aria-hidden="true"></i> Add</button></a>
-	{% render_table table %}
-	
+	<a href="{% url 'pricing_create' %}"><button type="button" class="btn btn-default add"><i class="fa fa-plus" aria-hidden="true"></i> Add</button></a>
+	{% render_table table "billing/table.html" %}	
 {% endblock main %}

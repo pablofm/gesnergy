@@ -69,6 +69,20 @@ class LectureCreate(TestCase):
         self.assertEqual(0, Lecture.objects.count())
 
 
+class LectureDelete(TestCase):
+    def setUp(self):
+        self.lecture = Lecture.objects.create(day=date.today(), lecture=2)
+
+    def test_deleting_a_lecture_decreases_the_number_of_objects(self):
+        self.assertEqual(1, Lecture.objects.count())
+        self.client.post(reverse('lecture_delete', kwargs={'lecture_id': self.lecture.id}))
+        self.assertEqual(0, Lecture.objects.count())
+
+    def test_wrong_data_doestn_work(self):
+        self.client.post(reverse('lecture_delete', kwargs={'lecture_id': self.lecture.id+1}))
+        self.assertEqual(1, Lecture.objects.count())
+
+
 class PricingListTest(TestCase):
     def setUp(self):
         self.pricing1 = Pricing.objects.create(day=date.today(), price=22.30)
@@ -120,3 +134,17 @@ class PricingCreate(TestCase):
         self.data['day'] = '2015-2015-2015'
         self.client.post(reverse('pricing_create'), self.data)
         self.assertEqual(0, Pricing.objects.count())
+
+
+class PricingDelete(TestCase):
+    def setUp(self):
+        self.pricing = Pricing.objects.create(day=date.today(), price=2)
+
+    def test_deleting_a_pricing_decreases_the_number_of_objects(self):
+        self.assertEqual(1, Pricing.objects.count())
+        self.client.post(reverse('pricing_delete', kwargs={'pricing_id': self.pricing.id}))
+        self.assertEqual(0, Pricing.objects.count())
+
+    def test_wrong_data_doestn_work(self):
+        self.client.post(reverse('pricing_delete', kwargs={'pricing_id': self.pricing.id+1}))
+        self.assertEqual(1, Pricing.objects.count())
