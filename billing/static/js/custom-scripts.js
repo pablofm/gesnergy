@@ -23,7 +23,6 @@
 
             /* MORRIS BAR CHART
 			-----------------------------------------*/
-
             Morris.Bar({
                 element: 'morris-bar-chart',
                 data: [{
@@ -59,19 +58,17 @@
                 ykeys: ['a', 'b'],
                 labels: ['Series A', 'Series B'],
 				 barColors: [
-                    '#A6A6A6','#30a5ff',
-                    '#A8E9DC' 
-                ],
+    '#A6A6A6','#30a5ff',
+    '#A8E9DC' 
+  ],
                 hideHover: 'auto',
                 resize: true
             });
-	           
-
+	 
 
 
             /* MORRIS DONUT CHART
 			----------------------------------------*/
-
             Morris.Donut({
                 element: 'morris-donut-chart',
                 data: [{
@@ -85,14 +82,12 @@
                     value: 20
                 }],
 				   colors: [
-                    '#A6A6A6','#30a5ff',
-                    '#A8E9DC' 
-                ],
+    '#A6A6A6','#30a5ff',
+    '#A8E9DC' 
+  ],
                 resize: true
             });
-            
 
-            
             /* MORRIS AREA CHART
 			----------------------------------------*/
 
@@ -177,16 +172,18 @@
 					  { y: '2023', a: 145, b: 155},
 					  { y: '2024', a: 160, b: 195}
 				],
-                xkey: 'y',
-                ykeys: ['a', 'b'],
-                labels: ['Total Income', 'Total Outcome'],
-                fillOpacity: 0.6,
-                hideHover: 'auto',
-                behaveLikeLine: true,
-                resize: true,
-                pointFillColors:['#ffffff'],
-                pointStrokeColors: ['black'],
-                lineColors:['gray','#30a5ff']
+            
+				 
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['Total Income', 'Total Outcome'],
+      fillOpacity: 0.6,
+      hideHover: 'auto',
+      behaveLikeLine: true,
+      resize: true,
+      pointFillColors:['#ffffff'],
+      pointStrokeColors: ['black'],
+      lineColors:['gray','#30a5ff']
 	  
             });
            
@@ -194,8 +191,10 @@
             $('.bar-chart').cssCharts({type:"bar"});
             $('.donut-chart').cssCharts({type:"donut"}).trigger('show-donut-chart');
             $('.line-chart').cssCharts({type:"line"});
-            $('.pie-thychart').cssCharts({type:"pie"});
 
+            $('.pie-thychart').cssCharts({type:"pie"});
+       
+	 
         },
 
         initialization: function () {
@@ -204,11 +203,10 @@
         }
 
     }
-
     // Initializing ///
 
     $(document).ready(function () {
-        // mainApp.initFunction(); 
+        mainApp.initFunction(); 
 		$("#sideNav").click(function(){
 			if($(this).hasClass('closed')){
 				$('.navbar-side').animate({left: '0px'});
