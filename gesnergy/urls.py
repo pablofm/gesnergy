@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from billing import urls as billing_urls
+from lectures import urls as lectures_urls
+from pricing import urls as pricing_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(billing_urls)),
+    url(r'^lectures/', include(lectures_urls)),
+    url(r'^pricing/', include(pricing_urls)),
 ]

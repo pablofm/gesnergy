@@ -1,5 +1,5 @@
 from django import forms
-from billing.models import Lecture, Pricing
+from lectures.models import Lecture
 
 
 class LectureForm(forms.ModelForm):
@@ -9,7 +9,6 @@ class LectureForm(forms.ModelForm):
 
     def is_valid(self):
         valid = super(LectureForm, self).is_valid()
-        # Los campos están vacíos
         if not valid:
             return False
         if Lecture.objects.count() > 0:
@@ -17,9 +16,3 @@ class LectureForm(forms.ModelForm):
                 return False
 
         return True
-
-
-class PricingForm(forms.ModelForm):
-    class Meta:
-        model = Pricing
-        fields = '__all__'

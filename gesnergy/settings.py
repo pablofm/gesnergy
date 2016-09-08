@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'billing',
+    'pricing',
+    'lectures',
     'django_tables2',
 ]
 
