@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Lecture(models.Model):
-    day = models.DateField()
+    day = models.DateField(unique=True)
     lecture = models.PositiveIntegerField()
 
     def get_absolute_url(self):
@@ -11,7 +11,7 @@ class Lecture(models.Model):
 
 
 class Pricing(models.Model):
-    day = models.DateField()
+    day = models.DateField(unique=True)
     price = models.FloatField()
 
     def get_absolute_url(self):

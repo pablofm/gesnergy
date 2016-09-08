@@ -206,7 +206,10 @@
     // Initializing ///
 
     $(document).ready(function () {
-        mainApp.initFunction(); 
+        //mainApp.initFunction(); 
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+        });
 		$("#sideNav").click(function(){
 			if($(this).hasClass('closed')){
 				$('.navbar-side').animate({left: '0px'});

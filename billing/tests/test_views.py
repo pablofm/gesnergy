@@ -1,5 +1,5 @@
 from django.test import TestCase
-from datetime import date
+from datetime import date, timedelta as td
 from django.core.urlresolvers import reverse
 from billing.models import Lecture, Pricing
 
@@ -19,7 +19,7 @@ class BillingTest(TestCase):
 class LectureListTest(TestCase):
     def setUp(self):
         self.measure1 = Lecture.objects.create(day=date.today(), lecture=200)
-        self.measure2 = Lecture.objects.create(day=date.today(), lecture=200)
+        self.measure2 = Lecture.objects.create(day=date.today() + td(days=1), lecture=200)
         url = reverse('lecture_list')
         self.response = self.client.get(url)
 
@@ -44,8 +44,7 @@ class LectureTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_measure_that_do_not_exist_implies_404(self):
-        lecture = Lecture.objects.create(day=date.today(), lecture=200)
-        url = reverse('lecture_detail', kwargs={'lecture_id': lecture.id + 1})
+        url = reverse('lecture_detail', kwargs={'lecture_id': self.lecture.id + 1})
         response = self.client.get(url)
         self.assertEqual(404, response.status_code)
 
@@ -73,7 +72,7 @@ class LectureCreate(TestCase):
 class PricingListTest(TestCase):
     def setUp(self):
         self.pricing1 = Pricing.objects.create(day=date.today(), price=22.30)
-        self.pricing2 = Pricing.objects.create(day=date.today(), price=42.12)
+        self.pricing2 = Pricing.objects.create(day=date.today() + td(days=1), price=42.12)
         url = reverse('pricing_list')
         self.response = self.client.get(url)
 
@@ -98,8 +97,7 @@ class PricingTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_pricing_that_do_not_exist_implies_404(self):
-        pricing = Pricing.objects.create(day=date.today(), price=22.8)
-        url = reverse('pricing_detail', kwargs={'pricing_id': pricing.id + 1})
+        url = reverse('pricing_detail', kwargs={'pricing_id': self.pricing.id + 1})
         response = self.client.get(url)
         self.assertEqual(404, response.status_code)
 

@@ -6,7 +6,7 @@ from billing.models import Lecture
 class LectureFormTest(TestCase):
     def setUp(self):
         self.data = {
-            'day': '2015-12-21',
+            'day': '2015-01-01',
             'lecture': 215
         }
 

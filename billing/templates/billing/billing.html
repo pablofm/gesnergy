@@ -15,9 +15,11 @@
     <link href="{% static 'js/morris/morris-0.4.3.min.css' %}" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'js/Lightweight-Chart/cssCharts.css' %}"> 
+
+
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="{% static 'js/Lightweight-Chart/cssCharts.css' %}"> 
 </head>
 
 <body>
@@ -40,7 +42,9 @@
                     {% block menu %}
                     <li><a class="active-menu" href="{% url 'billing' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li><a href="{% url 'pricing_list' %}"><i class="fa fa-bolt"></i> Pricing</a></li>
-                    <li><a href="{% url 'lecture_list' %}"><i class="fa fa-calendar-check-o"></i> Lectures</a></li>
+                    <li><a href="{% url 'lecture_list' %}"><i class="fa fa-calendar"></i> Lectures</a></li>
+                    <li><a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Are you sure?" href="{% url 'load_data' %}">Load sample data</a></li>
+                    <li><a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Are you sure?" href="{% url 'clean_data' %}">Clean database</a></li>
                     {% endblock menu %}
                 </ul>
             </div>
@@ -56,6 +60,7 @@
             </div>
                 
             <div id="page-inner">
+                
                 {% block main %}
                 {% comment %}
                 <div class="row">
@@ -219,6 +224,7 @@
     <script src="{% static 'js/easypiechart.js' %}"></script>
     <script src="{% static 'js/easypiechart-data.js' %}"></script>
     <script src="{% static 'js/Lightweight-Chart/jquery.chart.js' %}"></script>
+    <script src="{% static 'js/bootstrap-confirmation.min.js' %}"></script>
     <script src="{% static 'js/custom-scripts.js' %}"></script>
 </body>
 

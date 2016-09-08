@@ -1,7 +1,13 @@
 from django.contrib import admin
+from billing.models import Pricing, Lecture
 
-# Register your models here.
-from billing.models import *
 
-admin.site.register(Pricing)
-admin.site.register(Lecture)
+class PricingAdmin(admin.ModelAdmin):
+    list_display = ('day', 'price')
+
+
+class LectureAdmin(admin.ModelAdmin):
+    list_display = ('day', 'lecture')
+
+admin.site.register(Pricing, PricingAdmin)
+admin.site.register(Lecture, LectureAdmin)
