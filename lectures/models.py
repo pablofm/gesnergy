@@ -11,3 +11,6 @@ class Lecture(models.Model):
 
     def __str__(self):
         return str(self.lecture)
+
+    class Meta:
+        ordering = ['-day']

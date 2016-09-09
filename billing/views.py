@@ -7,11 +7,13 @@ from pricing.models import Pricing
 from datetime import date, timedelta as td
 import random
 from django.db import transaction
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 def load_data(self):
     with transaction.atomic():
-        january = date(2016, 1, 1)
+        january = date(2015, 1, 1)
         today = date.today()
         delta = today - january
         lecture = 0
@@ -35,6 +37,15 @@ class BillingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(BillingView, self).get_context_data(**kwargs)
+        prices = Pricing.objects.all()[:30]
+        raw_data = []
+        for price in prices:
+            data_dict = {}
+            data_dict["y"] = price.day
+            data_dict["a"] = price.price
+            raw_data.append(data_dict)
+        data_json = json.dumps(list(raw_data), cls=DjangoJSONEncoder)
+        context['linechart_data'] = data_json
         context['total_pricings'] = Pricing.objects.count()
         context['total_lectures'] = Lecture.objects.count()
         context['last_price'] = Pricing.objects.last()

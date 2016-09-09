@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
+from pricing.models import Pricing
+from lecture.models import Lecture
 
 
 class BillingTest(TestCase):
